@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Product } from '../models/product.interface';
 
@@ -7,11 +7,23 @@ import { Product } from '../models/product.interface';
   providedIn: 'root',
 })
 export class ProductsService {
+  private url: string = 'http://localhost:8080/products';
+
   constructor(private http: HttpClient) {}
 
   getProduct() : Observable <Product[]> {
-    return this.http.get <Product[]>(
-      'https://virtserver.swaggerhub.com/ssinuco/BurgerQueenAPI/2.0.0/products',
-    );
+    const listOfProducts = `${this.url}`;
+    return this.http.get<Product[]>(listOfProducts);
+  }
+
+  getProducts() {
+    const myJWTFromSessionStorage = sessionStorage.get('accessToken');
+    const header = new HttpHeaders()
+      .set('Content-Type', 'aplication/json')
+      .set('Authorization', `Bearer: ${myJWTFromSessionStorage}`);
+
+    return this.http.get('this.url', {
+      headers: header,
+    });
   }
 }

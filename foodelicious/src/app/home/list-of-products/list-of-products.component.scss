@@ -1,0 +1,12 @@
+#listOfProducts{
+  width: 660px;
+  height: 497px;
+  /* left: 270px; */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+#menu{
+  background-image: url("../../../assets/images/marco_menu.svg");
+  width: 220px;
+}

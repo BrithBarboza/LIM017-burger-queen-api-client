@@ -4,14 +4,12 @@ import { LoginComponent } from './authentication/login/login.component';
 import { HomeComponent } from './home/home/home.component';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: HomeComponent,
-  },
-  {
-    path: 'login',
-    component: LoginComponent,
-  },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+
+  { path: 'login', component: LoginComponent },
+
+  { path: 'home', component: HomeComponent },
+
 ];
 
 @NgModule({

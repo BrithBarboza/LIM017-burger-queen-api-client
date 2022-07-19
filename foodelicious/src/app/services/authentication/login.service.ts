@@ -10,7 +10,12 @@ import { ResponseI } from '../../models/authentication/response.interface';
 export class LoginService {
   url: string = 'http://localhost:8080/login';
 
-  constructor(private http: HttpClient) {}
+  headers = new Headers();
+
+  constructor(private http: HttpClient) {
+    this.headers.append('Content-Type', 'application/json');
+    this.headers.append('Authorization', 'application/json');
+  }
 
   loginByEmail(form: LoginI):Observable<ResponseI> {
     const addressEmail = `${this.url}`;

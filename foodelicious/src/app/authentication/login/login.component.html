@@ -15,9 +15,6 @@
             id="floatingInputEmail" required/>
             <label for="floatingInput">Email address</label>
           </div>
-          <div class="text-danger">
-            <span>The Email address <strong> is required.</strong></span>
-          </div>
         </div>
         <div class="form-group">
           <div class="form-floating mb-3">
@@ -25,15 +22,14 @@
             id="floatingInputPassword" required/>
             <label for="validationPassword" class="form-label">Password</label>
           </div>
-          <div class="text-danger">
-            <span>The password <strong> is required.</strong></span>
+          <div class="alert alert-danger" *ngIf="ok">
+            <span> {{errorMsg}} </span>
           </div>
         </div>
         <div class="d-grid">
         <button type="submit" id="singIn" class="btn btn-warning">Sing in</button>
         </div>
       </form>
-
     </div>
   </div>
 </div>

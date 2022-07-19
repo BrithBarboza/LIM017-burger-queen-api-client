@@ -10,12 +10,12 @@ import { ProductsService } from 'src/app/services/get-products.service';
 export class ListOfProductsComponent implements OnInit {
   products: Product[] | undefined = [];
 
-  constructor(
-    private productService: ProductsService,
-  ) {}
+  constructor(private productService: ProductsService) {}
 
   ngOnInit(): void {
-    this.getProduct();
+    this.productService.getProduct().subscribe((data) => {
+      this.products = data;
+    });
   }
 
   async getProduct() {
